@@ -1,18 +1,16 @@
 
 exports.up = function(knex) {
-    //change want to make to our schema
-    return knex.schema.createTable("car-Info", tbl => {
+    return knex.schema.createTable("car-info", tbl => {
         // id column, integer, primary key, auto-increment
         tbl.increments();
 
         tbl.integer("VIN");
 
-        tbl.string("make");
+        tbl.string("make").index();
 
-        tbl.string("model",255).index();
+        tbl.string("model").index();
 
-        tbl.integer("mileage");
-        
+        tbl.integer("milage").index();
 
         // adds created_at and updated_at columns
         //tbl.timestamps(true, true);
@@ -20,6 +18,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  //undoing that change
-  return knex.schema.dropTableIfExists("car-Info")
+    return knex.schema.dropTableIfExists("car-info");
 };
