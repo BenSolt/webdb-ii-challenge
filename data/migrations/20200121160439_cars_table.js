@@ -1,12 +1,13 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable("songs", tbl => {
+    //change want to make to our schema
+    return knex.schema.createTable("car-Info", tbl => {
         // id column, integer, primary key, auto-increment
         tbl.increments();
 
         tbl.integer("VIN");
 
-        tbl.string("make", 255).index();
+        tbl.string("make");
 
         tbl.string("model",255).index();
 
@@ -19,5 +20,6 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+  //undoing that change
+  return knex.schema.dropTableIfExists("car-Info")
 };
